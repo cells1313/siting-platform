@@ -565,8 +565,16 @@ body.app { background: var(--bg); }
 }
 .bar-l { display: flex; align-items: center; gap: 12px; min-width: 0; }
 .mark {
+  position: relative;
   width: 26px; height: 26px; border-radius: 8px; flex: 0 0 auto;
   background: var(--accent);
+}
+/* 中心一个白点加一圈细环：避免头部出现一个空方块 */
+.mark::after {
+  content: ""; position: absolute; left: 50%; top: 50%;
+  width: 8px; height: 8px; margin: -4px 0 0 -4px;
+  border-radius: 50%; background: #fff;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
 }
 .bar h1 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
 .bar p { margin: 2px 0 0; font-size: 12.5px; color: var(--muted); }

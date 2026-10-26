@@ -577,8 +577,16 @@ body.app { background: var(--bg); }
 }
 .bar-l { display: flex; align-items: center; gap: 12px; min-width: 0; }
 .mark {
+  position: relative;
   width: 26px; height: 26px; border-radius: 8px; flex: 0 0 auto;
   background: var(--accent);
+}
+/* 中心一个白点加一圈细环：避免头部出现一个空方块 */
+.mark::after {
+  content: ""; position: absolute; left: 50%; top: 50%;
+  width: 8px; height: 8px; margin: -4px 0 0 -4px;
+  border-radius: 50%; background: #fff;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
 }
 .bar h1 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
 .bar p { margin: 2px 0 0; font-size: 12.5px; color: var(--muted); }
@@ -1100,7 +1108,7 @@ body.app { height: auto; overflow: visible; }
     <pre><code>{
   &#34;ok&#34;: true,
   &#34;area_id&#34;: &#34;朝阳区望京西片区（示例）&#34;,
-  &#34;elapsed_ms&#34;: 3262.5,
+  &#34;elapsed_ms&#34;: 6860.4,
   &#34;data_profile&#34;: {
     &#34;level&#34;: 3,
     &#34;label&#34;: &#34;L3 完整&#34;,
@@ -1599,7 +1607,7 @@ body.app { height: auto; overflow: visible; }
   </details>
 
   <footer class="foot">
-    耗时 3262.5 ms · 数据画像 L3 完整
+    耗时 6860.4 ms · 数据画像 L3 完整
     · 生成于本次请求，未落盘
   </footer>
 </main>
